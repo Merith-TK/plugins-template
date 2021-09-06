@@ -2,15 +2,11 @@ FROM gitpod/workspace-base
 
 USER gitpod
 
-# Install custom tools, runtime, etc. using apt-get
-# For example, the command below would install "bastet" - a command line tetris clone:
-#
-# RUN sudo apt-get -q update && \
-#     sudo apt-get install -yq bastet && \
-#     sudo rm -rf /var/lib/apt/lists/*
-#
-# More information: https://www.gitpod.io/docs/config-docker/
+# https://www.gitpod.io/docs/config-docker/
 
-# Install Java 8 and 16
+# Install Java 11
 RUN sudo apt-get -q update && \
-    sdk install java
+    sudo apt install -yq openjdk-11-jdk && \
+    sudo apt install -yq openjdk-11-jdk-headless
+
+RUN sudo update-java-alternatives --set java-1.11.0-openjdk-amd64
